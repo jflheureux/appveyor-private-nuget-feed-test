@@ -8,9 +8,9 @@ image: Visual Studio 2015
 
 before_build:
   - nuget sources Add -Name "Habitat.Coveo" -Source "%HabitatCoveoNuGetSourceUrl%" -username %HabitatCoveoNuGetSourceUsername% -password %HabitatCoveoNuGetSourceAuthToken%
-  - nuget install "Coveo.Framework" -Source "Habitat.Coveo" -Version 4.0.1088.0 -OutputDirectory ".\packages"
-  - md .\lib
-  - md .\lib\Coveo
-  - mv .\packages\Coveo.Framework.4.0.1088.0\lib\net45\*.dll .\lib\Coveo
+  - nuget install "Coveo.Framework" -Source "Habitat.Coveo" -Version 4.0.1088.0 -OutputDirectory ".\packages" -Verbosity quiet
+  - mkdir .\lib
+  - mkdir .\lib\Coveo
+  - move .\packages\Coveo.Framework.4.0.1088.0\lib\net45\*.dll .\lib\Coveo
   - cd .\lib\Coveo
   - dir
